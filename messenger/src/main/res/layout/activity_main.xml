@@ -11,8 +11,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cn.liusiqian.messenger.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:text="Bind"/>
 </RelativeLayout>

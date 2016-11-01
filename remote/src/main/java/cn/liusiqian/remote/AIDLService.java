@@ -6,6 +6,7 @@ import android.os.IBinder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -34,7 +35,18 @@ public class AIDLService extends Service
         @Override
         public void addNewStudent(Student student) throws RemoteException
         {
+            try
+            {
+                //Assuming processing Data
+                Thread.sleep(1800);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
             students.add(student);
+            Log.i("AIDL--Server","addNewStudent--Thread:"+Thread.currentThread().getName());
+            notifyStudentAdded(student);
         }
 
         @Override
@@ -56,6 +68,19 @@ public class AIDLService extends Service
         }
     };
 
+    private void notifyStudentAdded(Student student) throws RemoteException
+    {
+        int count = mListCallbacks.beginBroadcast();
+        for (int i = 0; i < count; i++)
+        {
+            IOnNewStudentAddedListener listener = mListCallbacks.getBroadcastItem(i);
+            if (listener != null)
+            {
+                listener.onNewStudentAdded(student);
+            }
+        }
+        mListCallbacks.finishBroadcast();
+    }
 
     @Nullable
     @Override

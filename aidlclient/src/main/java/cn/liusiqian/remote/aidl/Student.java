@@ -27,7 +27,7 @@ public class Student implements Parcelable
         isMale = in.readByte() != 0;
     }
 
-    public static final Creator<Student> CREATOR = new Creator<Student>()
+    public static final Parcelable.Creator<Student> CREATOR = new Parcelable.Creator<Student>()
     {
         @Override
         public Student createFromParcel(Parcel in)

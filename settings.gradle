@@ -1,1 +1,1 @@
-include ':messenger', ':remote', ':aidlclient'
+include ':messenger', ':remote', ':aidlclient', ':binderpoolclient'

@@ -26,6 +26,9 @@
 
         <service android:name=".AIDLService"
                  android:exported="true"/>
+
+        <service android:name=".BinderPoolService"
+                 android:exported="true"/>
     </application>
 
 </manifest>
